@@ -8,7 +8,11 @@ from todoapp.models import Task, Tag
 
 
 def index(request):
-    return render(request, "todoapp/index.html")
+    context = {
+        "completed_task": Task.objects.filter(completed=True).count(),
+        "uncompleted_task": Task.objects.filter(completed=False).count()
+    }
+    return render(request, "todoapp/index.html", context)
 
 
 class TagListView(generic.ListView):

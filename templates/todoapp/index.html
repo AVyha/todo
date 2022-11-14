@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Index</h1>
+  <h1>Welcome to <strong>TODO</strong> page</h1>
+  <h3>Now you have</h3>
+  <li>Completed task - {{ completed_task }}</li>
+  <li>Uncompleted task - {{ uncompleted_task }}</li>
 {% endblock %}
