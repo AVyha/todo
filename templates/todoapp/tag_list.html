@@ -2,9 +2,13 @@
 
 {% block content %}
   <h1>All tags</h1>
+  <a href="{% url 'todo:tag-create' %}">Create</a>
   {% if tag_list %}
     {% for tag in tag_list %}
-      <li>{{ tag.name }}</li>
+      <li>{{ tag.name }} -
+        <a href="{% url 'todo:tag-update' pk=tag.id%}">update</a>
+        <a href="{% url 'todo:tag-delete' pk=tag.id%}">delete</a>
+      </li>
     {% endfor %}
 
   {% else %}
