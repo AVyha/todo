@@ -1,5 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from todoapp.forms import TaskForm
@@ -50,3 +51,10 @@ class TaskUpdateView(generic.UpdateView):
 class TaskDeleteView(generic.DeleteView):
     model = Task
     success_url = reverse_lazy("todo:task-list")
+
+
+def task_status_update(request, pk):
+    task = Task.objects.get(id=pk)
+    task.completed = not task.completed
+    task.save()
+    return HttpResponseRedirect(reverse_lazy("todo:task-list"))

@@ -11,7 +11,8 @@ urlpatterns = [
     path("tasks/", TaskListView.as_view(), name="task-list"),
     path("task/create/", TaskCreateView.as_view(), name="task-create"),
     path("task/update/<int:pk>/", TaskUpdateView.as_view(), name="task-update"),
-    path("task/delete/<int:pk>/", TaskDeleteView.as_view(), name="task-delete")
+    path("task/delete/<int:pk>/", TaskDeleteView.as_view(), name="task-delete"),
+    path("task/update_status/<int:pk>/", task_status_update, name="task-update-status")
 ]
 
 app_name = "todo"
