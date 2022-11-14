@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from todoapp.forms import TaskForm
 from todoapp.models import Task, Tag
 
 
@@ -37,7 +38,7 @@ class TaskListView(generic.ListView):
 class TaskCreateView(generic.CreateView):
     model = Task
     success_url = reverse_lazy("todo:task-list")
-    fields = ("content", "deadline", "tags")
+    form_class = TaskForm
 
 
 class TaskUpdateView(generic.UpdateView):
