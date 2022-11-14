@@ -3,8 +3,9 @@
 
 {% block content %}
   <form action="" method="post">
+    <h1>{{ object|yesno:"Update,Create" }} tag</h1>
     {% csrf_token %}
     {{ form|crispy }}
-    <input type="submit" value="Confirm">
+    <input type="submit" value="Confirm" class="btn btn-primary">
   </form>
 {% endblock %}
