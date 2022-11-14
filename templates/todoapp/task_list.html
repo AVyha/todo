@@ -1,10 +1,15 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <h1>
     Tasks list
     <a href="{% url 'todo:task-create' %}" class="btn btn-primary float-right">Create</a>
   </h1>
+  <form action="" method="get" class="form-inline">
+   {{ search_task|crispy }}
+    <input type="submit" class="btn btn-warning">
+  </form>
   <br>
   {% if task_list %}
     {% for task in task_list %}
