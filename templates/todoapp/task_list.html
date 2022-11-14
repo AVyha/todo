@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Tasks list</h1>
+  <a href="{% url 'todo:task-create' %}">Create</a>
+  {% if task_list %}
+    {% for task in task_list %}
+      <li>{{ task.content }} -
+        <a href="{% url 'todo:task-update' pk=task.id%}">update</a>
+        <a href="{% url 'todo:task-delete' pk=task.id%}">delete</a>
+      </li>
+    {% endfor %}
+
+  {% else %}
+    <p>Now we don't have tasks</p>
+  {% endif %}
+{% endblock %}
