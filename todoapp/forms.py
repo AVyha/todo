@@ -9,8 +9,17 @@ class TaskForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
-    deadline = forms.DateTimeField(widget=forms.DateTimeInput)
+    deadline = forms.DateTimeField(widget=forms.SelectDateWidget)
 
     class Meta:
         model = Task
         fields = ("content", "deadline", "tags")
+
+
+class TaskSearchForm(forms.Form):
+    content = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by content..."})
+    )
