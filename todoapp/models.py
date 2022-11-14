@@ -6,7 +6,7 @@ class Task(models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField(blank=True, null=True)
     completed = models.BooleanField(default=False)
-    tags = models.ForeignKey("Tag", on_delete=models.CASCADE)
+    tags = models.ManyToManyField("Tag", related_name="tasks")
 
     class Meta:
         ordering = ["completed", "-datetime"]
